@@ -101,6 +101,13 @@ webComponents.forEach((module) => {
 }
 
 const compileWebComponents = async () => {
+  
+  console.log(
+    new URL(`${saveDir}/entry.ts`, import.meta.url),
+    new URL(`${saveDir}/entry.ts`, Deno.mainModule),
+    new URL(`${saveDir}/entry.ts`, Deno.cwd()),
+  )
+
   const url = new URL(`${saveDir}/entry.ts`, Deno.mainModule);
   const result = await bundle(url);
   const code = result.code;

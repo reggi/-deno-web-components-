@@ -6,6 +6,8 @@ import { bundle } from "https://deno.land/x/emit@0.4.0/mod.ts";
 import pascalCase from "https://deno.land/x/case@2.1.1/pascalCase.ts"
 import { extname, join } from "https://deno.land/std@0.151.0/path/mod.ts";
 
+const cwd = Deno.cwd();
+
 export async function readWebComponents (webcomponentsDir: string) {
   const webComponents = [];
   for await (const file of Deno.readDir(webcomponentsDir)) {
@@ -101,7 +103,7 @@ webComponents.forEach((module) => {
 }
 
 const compileWebComponents = async () => {
-  const url = new URL(`${saveDir}/entry.ts`, import.meta.url);
+  const url = new URL(`${cwd}/${saveDir}/entry.ts`, import.meta.url);
   const result = await bundle(url);
   const code = result.code;
   await Deno.writeFile("./static/web-components.js", new TextEncoder().encode(code))

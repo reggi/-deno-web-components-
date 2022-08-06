@@ -103,7 +103,7 @@ webComponents.forEach((module) => {
 }
 
 const compileWebComponents = async () => {
-  const url = new URL(`${cwd}/${saveDir}/entry.ts`, import.meta.url);
+  const url = new URL(`${saveDir}/entry.ts`, cwd);
   const result = await bundle(url);
   const code = result.code;
   await Deno.writeFile("./static/web-components.js", new TextEncoder().encode(code))

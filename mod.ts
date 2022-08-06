@@ -104,7 +104,7 @@ const compileWebComponents = async () => {
   
   console.log(
     new URL(`${saveDir}/entry.ts`, import.meta.url),
-    new URL(`${saveDir}/entry.ts`, Deno.mainModule),
+    new URL(`${saveDir}/entry.ts`, Deno.mainModule)
   )
 
   const url = new URL(`${saveDir}/entry.ts`, Deno.mainModule);

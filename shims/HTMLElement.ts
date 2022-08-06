@@ -1,0 +1,1 @@
+export default window.HTMLElement || class HTMLElement {}
